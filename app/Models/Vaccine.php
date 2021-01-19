@@ -28,4 +28,7 @@ class Vaccine extends Model
     public function detail_injection() {
         return $this->hasMany(DetailInjectionSchedules::class);
     }
+    public function detail_bill() {
+        return $this->hasMany(DetailBill::class);
+    }
 }

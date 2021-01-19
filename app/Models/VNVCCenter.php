@@ -31,4 +31,7 @@ class VNVCCenter extends Model
     public function injection_schedules() {
         return $this->hasMany(InjectionSchedules::class);
     }
+    public function bill() {
+        return $this->hasMany(Bill::class);
+   }
 }

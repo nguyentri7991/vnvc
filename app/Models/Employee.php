@@ -32,4 +32,7 @@ class Employee extends Model
     public function detail_injection() {
         return $this->hasMany(DetailInjectionSchedules::class);
     }
+    public function bill() {
+        return $this->hasMany(Bill::class);
+   }
 }

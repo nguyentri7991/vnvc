@@ -1,29 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\VNVCCenter;
-use App\Models\City;
 
-class GroupVNVCController extends Controller
+class CenterController extends Controller
 {
-    public function findAll() {
+    public function findAllCenterByAdmin() {
         $group = VNVCCenter::all();
         return view('admin.group.index',['group'=>$group]);
     }
-
     public function add() {
         $city = City::all();
         return view('admin.group.add',['city'=>$city]);
     }
-
     public function edit($id) {
         $group = VNVCCenter::find($id);
         $city = City::all();
         return view('admin.group.edit',['group'=>$group,'city'=>$city]);
     }
-
     public function delete($id) {
         $group = VNVCCenter::find($id);
         if($group -> delete()) {
@@ -31,7 +28,6 @@ class GroupVNVCController extends Controller
             return redirect('admin/group');
         }
     }
-
     public function handleInsert(Request $request) {
         $group = new VNVCCenter;
         $group-> name =$request-> name;
@@ -42,7 +38,6 @@ class GroupVNVCController extends Controller
             return redirect('admin/group');
         }
     }
-
     public function handleUpdate(Request $request) {
         $id = $request ->id;
         $group = VNVCCenter::find($id);
@@ -56,5 +51,4 @@ class GroupVNVCController extends Controller
             }
         }
     }
-
 }

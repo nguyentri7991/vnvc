@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TypePackage;
 use App\Models\Package;
@@ -11,7 +12,7 @@ use App\Models\DetailPackageVaccine;
 
 class PackageController extends Controller
 {
-    public function findAllType() {
+    public function findAllTypePackageByAdmin() {
         $type = TypePackage::all();
         return view('admin.package.type_index',['type'=>$type]);
     }
@@ -49,7 +50,7 @@ class PackageController extends Controller
         }
     }
 
-    public function findAllPackage() {
+    public function findAllPackageByAdmin() {
         $package = Package::all('id','id_type','name','quantity_vaccine','price','saleOff','image');
         return view('admin.package.index',['package'=>$package]);
     }

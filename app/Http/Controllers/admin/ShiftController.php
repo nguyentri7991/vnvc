@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shift;
 
 class ShiftController extends Controller
 {
-    public function findAll() {
+    public function findAllShiftByAdmin() {
         $shift = Shift::all();
         return view('admin.shift.index',['shift'=>$shift]);
     }

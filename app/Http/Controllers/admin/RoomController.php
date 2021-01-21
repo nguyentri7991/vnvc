@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\VNVCCenter;
@@ -11,7 +12,7 @@ use App\Models\DetailRoomCenter;
 
 class RoomController extends Controller
 {
-    public function findAll() {
+    public function findAllRoomByAdmin() {
         $detail_room = RoomCenter::all();
         return view('admin.room.index',['detail'=>$detail_room]);
     }

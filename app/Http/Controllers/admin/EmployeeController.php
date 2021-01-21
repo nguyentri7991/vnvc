@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use App\Models\Position;
-use App\Models\VNVCCenter;
-use App\Models\Level;
-use App\Models\City;
 
 class EmployeeController extends Controller
 {
-    public function findAll() {
+    public function findAllEmployeeByAdmin() {
         $employee = Employee::all();
         return view('admin.employee.index',['employee'=>$employee]);
     }
@@ -109,5 +106,4 @@ class EmployeeController extends Controller
             return redirect() -> route('employe.edit');
         }
     }
-
 }

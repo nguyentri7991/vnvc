@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Supplier;
 
 class SupplierController extends Controller
 {
-    public function findAll() {
+    public function findAllSupplierByAdmin() {
         $supplier = Supplier::all();
         return view('admin.supplier.index',['supplier'=>$supplier]);
     }

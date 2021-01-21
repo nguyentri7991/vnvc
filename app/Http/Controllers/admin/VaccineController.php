@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TypeVaccine;
 use App\Models\TypePackage;
@@ -11,7 +12,7 @@ use App\Models\Vaccine;
 
 class VaccineController extends Controller
 {
-    public function findAllType() {
+    public function findAllTypeVaccineByAdmin() {
         $type = TypeVaccine::all();
         return view('admin.vaccine.type_index',['type'=>$type]);
     }
@@ -47,7 +48,7 @@ class VaccineController extends Controller
             }
         }
     }
-    public function findAllVaccine() {
+    public function findAllVaccineByAdmin() {
         $vaccine = Vaccine::all('id','image','id_type','id_supplier','name','source','price_in','price_out','date_of_manufacture','expiry_date','quantity');
         return view('admin.vaccine.index',['vaccine'=>$vaccine]);
     }

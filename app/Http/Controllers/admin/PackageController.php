@@ -120,9 +120,9 @@ class PackageController extends Controller
         $package -> price = $request->price;
         $package -> saleOff = $request->saleOff;
         $package -> note = $request->note;
+        $package->save();
         return \redirect() -> route('package.index');
     }
-    //End Function Admin Page
 
     public function showPackageHome($id_type) {
         $type_package = TypePackage::all('id','name');

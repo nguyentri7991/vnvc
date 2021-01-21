@@ -44,6 +44,7 @@
                         </select>
                     </div>
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Nhà Cung Cấp</label>
                     <select id="id_supplier" class="form-control" name="supplier">
                             @foreach($supplier as $supplier)
                                 <option value='{{$supplier ->id}}'>{{$supplier->symbol}} </option>

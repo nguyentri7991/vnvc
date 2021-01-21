@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    //Trang chủ khách hàng
+    //Danh sách vaccine
+    //Danh sách gói tiêm
+    //Thông tin chi tiết vaccine- gói tiêm
+
 }

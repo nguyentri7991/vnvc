@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CenterController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\ShiftController;
@@ -9,15 +10,14 @@ use App\Http\Controllers\admin\SupplierController;
 use App\Http\Controllers\admin\VaccineController;
 use App\Http\Controllers\admin\PackageController;
 use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\CustomerController;
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocalController;
 
-
 use App\Http\Controllers\client\RegistrationInjectionController;
+use App\Http\Controllers\client\SearchController;
+use App\Http\Controllers\client\CartController;
 
-
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/admin/login',[AuthController::class,'index'])->name('admin.login');
@@ -110,9 +110,19 @@ Route::any('/admin/goi-tiem/thuc-hien-them',[PackageController::class,'handleIns
 Route::get('/admin/khach-hang',[ClientController::class,'findAllClientByAdmin'])->name('client.index');
 Route::get('/admin/khach-hang-kham-benh/{id}',[ClientController::class,'detailTreatment'])->name('client.treatment');
 Route::get('/admin/khach-hang-dang-ky-tiem',[RegistrationInjectionController::class,'findAll'])->name('registration.index');
+
+Route::get('/admin/don-dat-hang',[CustomerController::class,'findAllOrderByAdmin'])->name('order.index');
+Route::get('/admin/don-dat-hang/chi-tiet/{id}',[CustomerController::class,'detailOrderByOrderId'])->name('order.detail');
+
 /* ----- End ----- */
 
 /* ----- Client ----- */
+Route::get('/tra-cuu-lich-tiem',[SearchController::class,'searchIndex'])-> name('client.search');
+Route::any('/thuc-hien-tra-cuu',[SearchController::class,'handleSearchInjectionForClient'])-> name('client.handleSearch');
+
+
+
+
 Route::get('/trang-chu',[HomeController::class,'indexHome'])-> name('client.home_index');
 
 Route::get('/',[HomeController::class,'index']);
@@ -146,8 +156,5 @@ Route::any('/dang-nhap',[ClientController::class,'handleLoginAccount'])->name('c
 
 Route::get('/thanh-toan-don-hang',[ClientController::class,'checkOut'])-> name('client.checkout');
 Route::any('/handle-check-out',[ClientController::class,'handleCheckOut'])-> name('client.handleCheckout');
-
-Route::get('/tra-cuu-lich-tiem',[ClientController::class,'searchIndex'])-> name('client.search');
-Route::any('/handle-tra-cuu',[ClientController::class,'handleSearchInjectionForClient'])-> name('client.handleSearch');
 
 /* ----- End ----- */

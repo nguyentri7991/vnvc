@@ -16,6 +16,6 @@ class DetailOrder extends Model
         return $this->belongsTo(Vaccine::class,'id_vaccine','id');
     }
     public function order() {
-        return $this->belongsTo(Order::class,'id_order','id');
+        return $this->belongsTo(Order::class,'id_order','order_id');
     }
 }
